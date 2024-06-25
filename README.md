@@ -29,7 +29,7 @@ Willkommen zur TEQWERK Bewerberchallenge! In diesem Projekt hast du die Möglich
 Stell dir vor, du arbeitest an der Entwicklung unseres neuen Produkts **TEQWERK Hospital Patients Manager** mit. Diese Anwendung wird von einem großen Krankenhaus genutzt, um Patientendaten zu verwalten. Aufgrund der kritischen Natur der Daten sowie der überlebenswichtig schnellen Abläufe im Krankenhaus, muss die Anwendung äußerst zuverlässig, skalierbar und sicher sein. Bedenke das bei deinen Infrastrukturentscheidungen immer mit!
 
 ### Technische Anforderungen
-Die Anwendung sollte jederzeit verfügbar sein und soll auf einer skalierbaren Architektur basieren - der Kunde erwartet, dass die Infrastruktur nach einer Migration für ein zukünftiges Wachstum sowie weitere Krankenhäuser vorbereitet ist. Außerdem ist wichtig, dass du beim Deployment auf eine nachvollziehbare Namensgebung der Komponenten achtest und Best Practices aus dem Microsoft Cloud-Adoption-Framework und/oder dem Well-Architected Framework berücksichtigst. Behalte auch Sicherheitsaspekte im Auge.
+Die Anwendung sollte jederzeit verfügbar sein und soll auf einer skalierbaren Architektur basieren - der Kunde erwartet, dass die Infrastruktur nach einer Migration für ein zukünftiges Wachstum sowie weitere Krankenhäuser vorbereitet ist. Außerdem ist wichtig, dass du beim Deployment auf eine nachvollziehbare Namensgebung der Komponenten achtest und Best Practices aus dem Microsoft Cloud-Adoption-Framework und/oder dem Well-Architected Framework berücksichtigst. Behalte auch Sicherheitsaspekte im Auge. Achte darauf eine geeignete Cloud-Region für das Projekt zu wählen.
 
 ## Deine Aufgaben im Projekt
 
@@ -46,7 +46,9 @@ Die Anwendung sollte jederzeit verfügbar sein und soll auf einer skalierbaren A
         - Stelle sicher, dass die Datenbank vom Backend privat geroutet wird.
 5. **Wähle eine geeignete, skalierbare Infrastruktur auf Azure:**
         - Du bist der Architekt dieses Projekts. Überlege dir, auf welcher Infrastruktur die Anwendung am sinnvollsten betrieben werden sollte. Integriere die Komponenten in dein Architekturbild.
-6. **Konzipiere ein Monitoring für die Applikation sowie Infrastrukur**
+6. **Achte auf die Sicherheit der Anwendung und Kommunikation zwischen den Komponenten:**
+        - Arbeite mit Managed Identites um die Authentifierzierung zwischen den Teilen der Applikation zu ermöglichen.
+7. **Konzipiere ein Monitoring für die Applikation sowie Infrastrukur**
      - Welche Möglichkeiten gibt es die Anwendungen zu monitoren? Welche Möglichkeiten eignen sich für die Anwendung?
      - Implementiere ein einfaches Monitoring mit Healthchecks auf die Anwendungskomponenten (falls dafür Logging nötig ist, setze dies ebenfalls um)
 
