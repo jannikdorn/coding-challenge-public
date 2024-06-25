@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8081:8081"
+    environment:
+      - DB_USER=root
+      - DB_PASSWORD=teqwerk
+      - DB_HOST=db
+      - DB_NAME=todos
+    networks:
+      - default
+    depends_on:
+      db:
+        condition: service_healthy
+    links:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8080:80"
+    networks:
+      - default
+  
+  db:
+    image: mysql
+    restart: always
+    ports:
+    - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: teqwerk
+      MYSQL_DATABASE: todos
+    networks:
+      - default
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  default:
+    driver: bridge
