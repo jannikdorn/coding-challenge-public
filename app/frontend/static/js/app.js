@@ -1,4 +1,4 @@
-const backendUrl = 'http://localhost:8081';
+const backendUrl = '__BACKEND_URL__';
 
 async function fetchPatients() {
     const response = await fetch(`${backendUrl}/patients`);

@@ -29,7 +29,10 @@ Willkommen zur TEQWERK Bewerberchallenge! In diesem Projekt hast du die Möglich
 Stell dir vor, du arbeitest an der Entwicklung unseres neuen Produkts **TEQWERK Hospital Patients Manager** mit. Diese Anwendung wird von einem großen Krankenhaus genutzt, um Patientendaten zu verwalten. Aufgrund der kritischen Natur der Daten sowie der überlebenswichtig schnellen Abläufe im Krankenhaus, muss die Anwendung äußerst zuverlässig, skalierbar und sicher sein. Bedenke das bei deinen Infrastrukturentscheidungen immer mit!
 
 ### Technische Anforderungen
-Die Anwendung sollte jederzeit verfügbar sein und soll auf einer skalierbaren Architektur basieren - der Kunde erwartet, dass die Infrastruktur nach einer Migration für ein zukünftiges Wachstum sowie weitere Krankenhäuser vorbereitet ist. Außerdem ist wichtig, dass du beim Deployment auf eine nachvollziehbare Namensgebung der Komponenten achtest und Best Practices aus dem Microsoft Cloud-Adoption-Framework und/oder dem Well-Architected Framework berücksichtigst. Behalte auch Sicherheitsaspekte im Auge. Achte darauf eine geeignete Cloud-Region für das Projekt zu wählen.
+Die Anwendung sollte jederzeit verfügbar sein und soll auf einer skalierbaren Architektur basieren - der Kunde erwartet, dass die Infrastruktur nach einer Migration für ein zukünftiges Wachstum sowie weitere Krankenhäuser vorbereitet ist. Außerdem ist wichtig, dass du beim Deployment auf eine nachvollziehbare Namensgebung der Komponenten achtest und Best Practices aus dem Microsoft Cloud-Adoption-Framework und/oder dem Well-Architected Framework berücksichtigst. Behalte auch Sicherheitsaspekte im Auge. 
+Achte darauf eine geeignete Cloud-Region für das Projekt zu wählen.
+Um Kosten zu sparen, kannst du gerne die kleinsten SKUs deployen um Kosten in deiner Subscription zu sparen. 
+Achte darauf, keine Secrets in Git einzuchecken und authentifizierungen bestmöglich abzusichern.
 
 ## Deine Aufgaben im Projekt
 
