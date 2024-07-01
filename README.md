@@ -79,7 +79,7 @@ docker-compose up --build
     - Achte dabei auf die Einhaltung der Namenskonventionen des Microsoft Cloud Adoption Framework und/oder Well-Architected Framework.
     - Nutze Best-Practices um dein Terraform Repository bestmöglich wartbar zu machen.
 
-2. **Verbinde deine CI/CD Pipeline mit deinem GitHub-Account:**
+2. **Verbinde deine CI/CD Pipeline mit einem geeigneten Azure Service Principal:**
     - Automatisiere das Deployment, sodass Infrastrukturänderungen per Pipeline ausgerollt werden.
 
 ## Präsentation und Abgabe
