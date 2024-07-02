@@ -4,6 +4,8 @@ Hey du! 👋
 
 Willkommen zur TEQWERK Bewerberchallenge! In diesem Projekt hast du die Möglichkeit, dein Können in den Bereichen Infrastruktur, Deployment (CI/CD) und Cloud-Lösungen unter Beweis zu stellen. Dein Ziel ist es, eine hochkritische Krankenhausanwendung zu implementieren, die rund um die Uhr verfügbar sein muss. Hier findest du alle notwendigen Informationen und Aufgaben, um erfolgreich durch die Challenge zu kommen. Falls du gar nicht mehr weiter kommst oder Fragen hast, sind wir natürlich immer für dich da! 
 
+[Azure Free Trial](https://azure.microsoft.com/de-de/free)
+
 # Inhaltsverzeichnis
 
 - [Bewerberchallenge](#bewerberchallenge)
