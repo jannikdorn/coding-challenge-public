@@ -1,0 +1,31 @@
+name: Build and Push Docker Images
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Login to GitHub Container Registry
+        run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GHCR_USERNAME }} --password-stdin
+
+      - name: Build Backend Image
+        run: |
+          docker build -t ghcr.io/teqwerk/dorjan-backend:latest -f backend/Dockerfile backend/
+          docker push ghcr.io/teqwerk/dorjan-backend:latest
+
+      - name: Build Frontend Image
+        run: |
+          docker build -t ghcr.io/teqwerk/dorjan-frontend:latest -f frontend/Dockerfile frontend/
+          docker push ghcr.io/teqwerk/dorjan-frontend:latest
+
+      - name: Logout from Docker
+        run: docker logout
