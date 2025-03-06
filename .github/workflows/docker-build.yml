@@ -19,13 +19,13 @@ jobs:
 
       - name: Build Backend Image
         run: |
-          docker build -t ghcr.io/dorjan/test-backend:latest -f app/backend/Dockerfile app/backend/
-          docker push ghcr.io/dorjan/test-backend:latest
+          docker build -t ghcr.io/dorjan-backend:latest -f app/backend/Dockerfile app/backend/
+          docker push ghcr.io/dorjan-backend:latest
 
       - name: Build Frontend Image
         run: |
-          docker build -t ghcr.io/dorjan/test-frontend:latest -f app/frontend/Dockerfile app/frontend/
-          docker push ghcr.io/dorjan/test-frontend:latest
+          docker build -t ghcr.io/dorjan-frontend:latest -f app/frontend/Dockerfile app/frontend/
+          docker push ghcr.io/dorjan-frontend:latest
 
       - name: Logout from Docker
         run: docker logout
