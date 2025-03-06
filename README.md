@@ -38,31 +38,31 @@ Achte darauf, keine Secrets in Git einzuchecken und authentifizierungen bestmög
 
 ## Deine Aufgaben im Projekt
 
-1. **Forke das Repository und richte die Basisanwendung ein:**
-    - Starte mit dem Forken des Repositories.
-    - Die Anwendung befindet sich im `app` Ordner und kann lokal durch `docker-compose` gestartet werden.
-2. **Erstelle eine GitHub Action Terraform Pipeline für das Infrastruktur Deployment:**
-    - Implementiere eine CI/CD Pipeline, die den Deployment-Prozess automatisiert.
-    - Stelle sicher, dass alle Ressourcen gemäß den Namenskonventionen des Microsoft Cloud Adoption Framework und/oder Well-Architected Framework benannt werden.
-    - Die Docker-Container sollten in einer geeigneten Pipeline gebaut und in der GitHub Registry abgelegt werden.
-3. **Lade die CSV Datei 'patient_data.csv' mit den Daten eines Vorsystems per Azure Data Factory in die SQL Datenbank:**
-    - Implementiere eine Azure Data Factory Pipeline, die die Daten automatisiert in die SQL Datenbank lädt. Verifiziere den erfolgreichen Upload in der Anwendung.
-4. **Verwende Private Networking:**
-    - Stelle sicher, dass die Datenbank vom Backend privat geroutet wird.
-5. **Wähle eine geeignete, skalierbare Infrastruktur auf Azure:**
-    - Du bist der Architekt dieses Projekts. Überlege dir, auf welcher Infrastruktur die Anwendung am sinnvollsten betrieben werden sollte. Integriere die Komponenten in dein Architekturbild.
-6. **Achte auf die Sicherheit der Anwendung und Kommunikation zwischen den Komponenten:**
-    - Arbeite mit Managed Identites um die Authentifierzierung zwischen den Teilen der Applikation zu ermöglichen.
-7. **Konzipiere ein Monitoring für die Applikation sowie Infrastrukur**
-     - Welche Möglichkeiten gibt es die Anwendungen zu monitoren? Welche Möglichkeiten eignen sich für die Anwendung?
-     - Implementiere ein einfaches Monitoring mit Healthchecks auf die Anwendungskomponenten (falls dafür Logging nötig ist, setze dies ebenfalls um)
+1. [X] **Forke das Repository und richte die Basisanwendung ein:**
+    - [X] Starte mit dem Forken des Repositories.
+    - [X] Die Anwendung befindet sich im `app` Ordner und kann lokal durch `docker-compose` gestartet werden.
+2. [ ] **Erstelle eine GitHub Action Terraform Pipeline für das Infrastruktur Deployment:**
+    - [ ] Implementiere eine CI/CD Pipeline, die den Deployment-Prozess automatisiert.
+    - [ ] Stelle sicher, dass alle Ressourcen gemäß den Namenskonventionen des Microsoft Cloud Adoption Framework und/oder Well-Architected Framework benannt werden.
+    - [X] Die Docker-Container sollten in einer geeigneten Pipeline gebaut und in der GitHub Registry abgelegt werden.
+3. [ ] **Lade die CSV Datei 'patient_data.csv' mit den Daten eines Vorsystems per Azure Data Factory in die SQL Datenbank:**
+    - [ ] Implementiere eine Azure Data Factory Pipeline, die die Daten automatisiert in die SQL Datenbank lädt. Verifiziere den erfolgreichen Upload in der Anwendung.
+4. [ ] **Verwende Private Networking:**
+    - [ ] Stelle sicher, dass die Datenbank vom Backend privat geroutet wird.
+5. [ ] **Wähle eine geeignete, skalierbare Infrastruktur auf Azure:**
+    - [ ] Du bist der Architekt dieses Projekts. Überlege dir, auf welcher Infrastruktur die Anwendung am sinnvollsten betrieben werden sollte. Integriere die Komponenten in dein Architekturbild.
+6. [ ] **Achte auf die Sicherheit der Anwendung und Kommunikation zwischen den Komponenten:**
+    - [ ] Arbeite mit Managed Identites um die Authentifierzierung zwischen den Teilen der Applikation zu ermöglichen.
+7. [ ] *Konzipiere ein Monitoring für die Applikation sowie Infrastrukur**
+    - [ ] Welche Möglichkeiten gibt es die Anwendungen zu monitoren? Welche Möglichkeiten eignen sich für die Anwendung?
+    - [ ] Implementiere ein einfaches Monitoring mit Healthchecks auf die Anwendungskomponenten (falls dafür Logging nötig ist, setze dies ebenfalls um)
 
 ## Bonus Aufgaben
 
-1. **Entwickle eine Authentifizierung für die Anwendung mit Entra ID oder GitHub App Registration:**
-    - Implementiere eine sichere Login-Methode für die Benutzer der Anwendung.
-2. **Integration eines User & Access Management Systems:**
-    - Baue ein Admin Center, in dem Benutzer und deren Zugriffsrechte verwaltet werden können.
+1. [ ] **Entwickle eine Authentifizierung für die Anwendung mit Entra ID oder GitHub App Registration:**
+    - [ ] Implementiere eine sichere Login-Methode für die Benutzer der Anwendung.
+2. [ ] **Integration eines User & Access Management Systems:**
+    - [ ] Baue ein Admin Center, in dem Benutzer und deren Zugriffsrechte verwaltet werden können.
 
 ## Lokales Deployment
 
