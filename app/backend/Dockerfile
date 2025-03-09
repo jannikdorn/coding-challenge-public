@@ -4,7 +4,7 @@ FROM golang:1.22.4 AS builder
 WORKDIR /app
 
 COPY . .
-ENV CGO_ENABLED=0 GOOS=linux GOARCH=arm64
+ENV CGO_ENABLED=0 GOOS=linux GOARCH=amd64
 
 RUN go mod tidy
 RUN go build -o main .
