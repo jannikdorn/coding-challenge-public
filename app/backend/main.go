@@ -26,7 +26,7 @@ func initDB() {
 	dbHost := os.Getenv("DB_HOST")
 
 	var err error
-	dsn := dbUser + ":" + dbPassword + "@tcp(" + dbHost + ":3306)/" + dbName
+	var connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true&tls=true", dbUser, dbPassword, dbHost, dbName)
 	db, err = sql.Open("mysql", dsn)
 	if err != nil {
 		log.Fatal(err)
