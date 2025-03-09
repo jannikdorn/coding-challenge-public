@@ -37,6 +37,7 @@ jobs:
         with:
           context: .
           file: app/backend/Dockerfile
+          tags: jannikdorn/coding-challenge-public/backend:latest
           push: true
           platforms: linux/amd64,linux/arm64/v8
           cache-from: type=local,src=/tmp/.buildx-cache
@@ -46,6 +47,7 @@ jobs:
         with:
           context: .
           file: app/frontend/Dockerfile
+          tags: jannikdorn/coding-challenge-public/frontend:latest
           push: true
           platforms: linux/amd64,linux/arm64/v8
           cache-from: type=local,src=/tmp/.buildx-cache
