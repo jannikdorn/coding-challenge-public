@@ -27,7 +27,7 @@ func initDB() {
 
 	var err error
 	var connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true&tls=true", dbUser, dbPassword, dbHost, dbName)
-	db, err = sql.Open("mysql", dsn)
+	db, err = sql.Open("mysql", connectionString)
 	if err != nil {
 		log.Fatal(err)
 	}
