@@ -35,7 +35,7 @@ jobs:
       - name: Build and push Backend image
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: app/backend
           file: app/backend/Dockerfile
           tags: jannikdorn/coding-challenge-public/backend:latest
           push: true
@@ -45,7 +45,7 @@ jobs:
       - name: Build and push Frontend image
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: app/frontend
           file: app/frontend/Dockerfile
           tags: jannikdorn/coding-challenge-public/frontend:latest
           push: true
