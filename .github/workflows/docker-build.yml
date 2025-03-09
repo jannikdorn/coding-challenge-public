@@ -39,7 +39,7 @@ jobs:
           file: app/backend/Dockerfile
           tags: ghcr.io/jannikdorn/coding-challenge-public/backend:latest
           push: true
-          platforms: linux/amd64,linux/arm64/v8
+          platforms: linux/amd64
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
       - name: Build and push Frontend image
@@ -49,6 +49,6 @@ jobs:
           file: app/frontend/Dockerfile
           tags: ghcr.io/jannikdorn/coding-challenge-public/frontend:latest
           push: true
-          platforms: linux/amd64,linux/arm64/v8
+          platforms: linux/amd64
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
