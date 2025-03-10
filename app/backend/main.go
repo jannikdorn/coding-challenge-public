@@ -26,6 +26,7 @@ func getAccessToken() (string, error) {
 	msiEndpoint := "http://169.254.169.254/metadata/identity/oauth2/token"
 	resource := "https://ossrdbms-aad.database.windows.net/.default"
 
+	// Token holen von Azure Managed Identity
 	token, err := adal.NewServicePrincipalTokenFromMSI(msiEndpoint, resource)
 	if err != nil {
 		return "", fmt.Errorf("Fehler beim Abrufen des Tokens: %v", err)
@@ -45,9 +46,9 @@ func initDB() {
 	dbHost := os.Getenv("DB_HOST")
 
 	var err error
-	cred, err := azidentity.NewManagedIdentityCredential(nil)
-  if err != nil {
-      log.Fatalf("failed to get managed identity credential: %v", err)
+	token, err := getAccessToken()
+	if err != nil {
+    log.Fatal(err)
   }
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?tls=true&allowCleartextPasswords=true",
 		dbUsername, url.QueryEscape(token), dbHost, dbName)
