@@ -20,15 +20,37 @@ type Patient struct {
 
 var db *sql.DB
 
+func getAccessToken() (string, error) {
+	msiEndpoint := "http://169.254.169.254/metadata/identity/oauth2/token"
+	resource := "https://ossrdbms-aad.database.windows.net/"
+
+	// Token holen von Azure Managed Identity
+	token, err := adal.NewServicePrincipalTokenFromMSI(msiEndpoint, resource)
+	if err != nil {
+		return "", fmt.Errorf("Fehler beim Abrufen des Tokens: %v", err)
+	}
+
+	err = token.Refresh()
+	if err != nil {
+		return "", fmt.Errorf("Fehler beim Aktualisieren des Tokens: %v", err)
+	}
+
+	return token.OAuthToken(), nil
+}
+
 func initDB() {
-	dbUser := os.Getenv("DB_USER")
-	dbPassword := os.Getenv("DB_PASSWORD")
 	dbName := os.Getenv("DB_NAME")
 	dbHost := os.Getenv("DB_HOST")
 
 	var err error
-	var connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true&tls=true", dbUser, dbPassword, dbHost, dbName)
-	db, err = sql.Open("mysql", connectionString)
+	token, err := getAccessToken()
+	if err != nil {
+    log.Fatal(err)
+  }
+	dsn := fmt.Sprintf("%s@tcp(%s:3306)/%s?tls=true",
+		url.QueryEscape(token), dbHost, dbName)
+
+	db, err = sql.Open("mysql", dsn)
 	if err != nil {
 		log.Fatal(err)
 	}
