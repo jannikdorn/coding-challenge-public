@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"os"
 	"fmt"
+	"net/url"
+  "github.com/Azure/go-autorest/autorest/adal"
 
 	_ "github.com/go-sql-driver/mysql"
 )
