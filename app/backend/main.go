@@ -24,7 +24,7 @@ var db *sql.DB
 
 func getAccessToken() (string, error) {
 	msiEndpoint := "http://169.254.169.254/metadata/identity/oauth2/token"
-	resource := "https://ossrdbms-aad.database.windows.net/"
+	resource := "https://ossrdbms-aad.database.windows.net/.default"
 
 	// Token holen von Azure Managed Identity
 	token, err := adal.NewServicePrincipalTokenFromMSI(msiEndpoint, resource)
@@ -49,7 +49,7 @@ func initDB() {
 	if err != nil {
     log.Fatal(err)
   }
-	dsn := fmt.Sprintf("%s@tcp(%s:3306)/%s?tls=true",
+	dsn := fmt.Sprintf("%s@tcp(%s:3306)/%s?tls=true&allowCleartextPasswords=true",
 		url.QueryEscape(token), dbHost, dbName)
 
 	db, err = sql.Open("mysql", dsn)
