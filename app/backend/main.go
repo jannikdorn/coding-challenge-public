@@ -1,14 +1,15 @@
 package main
 
 import (
+  "context"
 	"database/sql"
 	"encoding/json"
 	"log"
 	"net/http"
 	"os"
 	"fmt"
-	"net/url"
-  "github.com/Azure/go-autorest/autorest/adal"
+  "github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+  "github.com/Azure/azure-sdk-for-go/sdk/azcore/policy"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -22,36 +23,44 @@ type Patient struct {
 
 var db *sql.DB
 
-func getAccessToken() (string, error) {
-	msiEndpoint := "http://169.254.169.254/metadata/identity/oauth2/token"
-	resource := "https://ossrdbms-aad.database.windows.net/.default"
+func getAccessToken(client_id string) (string, error) {
+  clientID := azidentity.ClientID(client_id)
+	opts := azidentity.ManagedIdentityCredentialOptions{ID: clientID}
+  cred, err := azidentity.NewManagedIdentityCredential(&opts)
+  if err != nil {
+      log.Fatalf("Failed to create default credential: %v", err)
+  }
 
-	// Token holen von Azure Managed Identity
-	token, err := adal.NewServicePrincipalTokenFromMSI(msiEndpoint, resource)
-	if err != nil {
-		return "", fmt.Errorf("Fehler beim Abrufen des Tokens: %v", err)
-	}
+  // Create a token acquisition context
+  ctx := context.Background()
+  token, err := cred.GetToken(ctx, policy.TokenRequestOptions{
+      Scopes: []string{"https://ossrdbms-aad.database.windows.net"},
+  })
+  if err != nil {
+      log.Fatalf("Failed to get token: %v", err)
+  }
 
-	err = token.Refresh()
-	if err != nil {
-		return "", fmt.Errorf("Fehler beim Aktualisieren des Tokens: %v", err)
-	}
-
-	return token.OAuthToken(), nil
+	return token.Token, nil
 }
 
 func initDB() {
   dbUsername := os.Getenv("DB_USERNAME")
 	dbName := os.Getenv("DB_NAME")
 	dbHost := os.Getenv("DB_HOST")
+  client_id := os.Getenv("AZURE_CLIENT_ID")
 
 	var err error
-	token, err := getAccessToken()
+	token, err := getAccessToken(client_id)
 	if err != nil {
     log.Fatal(err)
   }
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?tls=true&allowCleartextPasswords=true",
-		dbUsername, url.QueryEscape(token), dbHost, dbName)
+  fmt.Println(token)
+	dsn := fmt.Sprintf("%s:%s@tcp(%s)/%s?tls=true&allowCleartextPasswords=true",
+	    dbUsername,
+	    token,
+  		dbHost,
+  		dbName,
+  )
 
 	db, err = sql.Open("mysql", dsn)
 	if err != nil {
